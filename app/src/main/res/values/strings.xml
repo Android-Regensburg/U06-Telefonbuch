@@ -1,3 +1,8 @@
 <resources>
-    <string name="app_name">Android-Basisapplikation</string>
+    <string name="app_name">Telefonbuch</string>
+    <string name="title_activity_movie">FriendFaceActivity</string>
+    <string name="friend_name">Name</string>
+    <string name="friend_phonenumber">Phonenumber</string>
+    <string name="create_friend">CreateFriend</string>
+    <string name="find_friend">FindFriend</string>
 </resources>

@@ -1,18 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <Button
+        android:id="@+id/button_id_create_friend"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:text ="@string/create_friend" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:id="@+id/textview_friend_name"
+        android:layout_width="match_parent"
+        android:layout_height="39dp"
+        android:text="@string/friend_name" />
+
+    <EditText
+        android:id="@+id/editText_id_friendname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint = "@string/friend_name"/>
+
+    <TextView
+        android:id="@+id/textview_friend_phonenumber"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:text="@string/friend_phonenumber" />
+
+    <EditText
+        android:id="@+id/editText_id_friend_phonenumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="numberDecimal"/>
+
+    <Button
+        android:id="@+id/button_id_find_friend"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/find_friend"/>
+
+    <EditText
+        android:id="@+id/editText_id_findfriend"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="@string/friend_name"/>
+
+    <TextView
+        android:id="@+id/textview_id_see_name"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:text="@string/friend_name" />
+
+    <TextView
+        android:id="@+id/textview_id_see_phonenumber"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:text="@string/friend_phonenumber" />
+
+</LinearLayout>
