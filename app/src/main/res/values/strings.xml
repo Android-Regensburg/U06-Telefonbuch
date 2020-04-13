@@ -2,6 +2,6 @@
     <string name="app_name">U06-Telefonbuch</string>
     <string name="name">Name</string>
     <string name="phone_number">Telefonnummer</string>
-    <string name="create_friend">FreundIn hinzufügen</string>
-    <string name="find_friend">FreundIn finden</string>
+    <string name="create_friend">Freund/in hinzufügen</string>
+    <string name="find_friend">Freund/in finden</string>
 </resources>
