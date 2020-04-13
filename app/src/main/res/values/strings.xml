@@ -1,8 +1,7 @@
 <resources>
-    <string name="app_name">Telefonbuch</string>
-    <string name="title_activity_movie">FriendFaceActivity</string>
-    <string name="friend_name">Name</string>
-    <string name="friend_phonenumber">Phonenumber</string>
-    <string name="create_friend">CreateFriend</string>
-    <string name="find_friend">FindFriend</string>
+    <string name="app_name">U06-Telefonbuch</string>
+    <string name="name">Name</string>
+    <string name="phone_number">Telefonnummer</string>
+    <string name="create_friend">FreundIn hinzufügen</string>
+    <string name="find_friend">FreundIn finden</string>
 </resources>
