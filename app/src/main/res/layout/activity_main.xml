@@ -5,65 +5,64 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:padding="8dp"
     tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/button_id_create_friend"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text ="@string/create_friend" />
-
-    <TextView
-        android:id="@+id/textview_friend_name"
-        android:layout_width="match_parent"
-        android:layout_height="39dp"
-        android:text="@string/friend_name" />
-
     <EditText
-        android:id="@+id/editText_id_friendname"
+        android:id="@+id/et_friend_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        android:hint = "@string/friend_name"/>
+        android:hint = "@string/name"/>
 
-    <TextView
-        android:id="@+id/textview_friend_phonenumber"
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:text="@string/friend_phonenumber" />
 
     <EditText
-        android:id="@+id/editText_id_friend_phonenumber"
+        android:id="@+id/et_friend_phone_number"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:hint="@string/phone_number"
         android:inputType="numberDecimal"/>
 
     <Button
-        android:id="@+id/button_id_find_friend"
+        android:id="@+id/btn_create_friend"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/find_friend"/>
+        android:layout_marginTop="5dp"
+        android:background="@color/colorPrimary"
+        android:textColor="@android:color/white"
+        android:text ="@string/create_friend" />
 
     <EditText
-        android:id="@+id/editText_id_findfriend"
+        android:id="@+id/et_find_friend_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:hint="@string/friend_name"/>
+        android:hint="@string/name"/>
+
+    <Button
+        android:id="@+id/btn_find_friend"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="15dp"
+        android:background="@color/colorPrimary"
+        android:textColor="@android:color/white"
+        android:text="@string/find_friend"/>
 
     <TextView
-        android:id="@+id/textview_id_see_name"
+        android:id="@+id/tv_see_name"
         android:layout_width="match_parent"
         android:layout_height="45dp"
-        android:text="@string/friend_name" />
+        android:text="@string/name" />
 
     <TextView
-        android:id="@+id/textview_id_see_phonenumber"
+        android:id="@+id/tv_see_phone_number"
         android:layout_width="match_parent"
         android:layout_height="45dp"
-        android:text="@string/friend_phonenumber" />
+        android:text="@string/phone_number" />
 
 </LinearLayout>

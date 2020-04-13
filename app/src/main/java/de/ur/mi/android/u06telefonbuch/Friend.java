@@ -1,4 +1,4 @@
-package de.ur.mi.android.base;
+package de.ur.mi.android.u06telefonbuch;
 
 import androidx.annotation.NonNull;
 import androidx.room.Entity;
@@ -6,21 +6,18 @@ import androidx.room.PrimaryKey;
 
 @Entity
 public class Friend {
-    @NonNull
+
     @PrimaryKey(autoGenerate = true)
     private int friendId;
+
     private String friendName;
     private int phoneNumber;
 
-    public Friend() {
-    }
-
-    @NonNull
     public int getFriendId() {
         return friendId;
     }
 
-    public void setFriendId(@NonNull int friendId) {
+    public void setFriendId(int friendId) {
         this.friendId = friendId;
     }
 
