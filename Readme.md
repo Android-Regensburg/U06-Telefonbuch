@@ -1,6 +1,6 @@
 # U06 | Telefonbuch
 
-![Cover für die vierte Übungsaufgabe](./docs/cover.png)
+![Cover für die sechste Übungsaufgabe](./docs/cover.png)
 
 ## Downloads
 
@@ -11,8 +11,10 @@
 
 Schreiben Sie eine einfache Datenbank-App, welche die Namen und Telefonnummern Ihrer Freunde
 speichert. Benutzen Sie eine Activity und `EditText`-Views um die Eingabe zu ermöglichen, sowie
-weitere `Views` und Buttons für die beschriebenen Funktionen. Nutzern soll es möglich sein, sich die
+weitere `TextViews` und `Buttons` für die beschriebenen Funktionen. Nutzern soll es möglich sein, sich die
 Telefonnummer anzeigen zu lassen, indem sie den passenden Namen eingeben.
+
+<img src="./docs/screenshot3.png" alt="Startbildschirm und Ausgabe eines Freundes" width="250"/>
 
 ## Hinweise
 
@@ -36,57 +38,50 @@ https://developer.android.com/training/data-storage/room/accessing-data
 
 ### Referenzieren Sie die Layout-Elemente in der MainActivity
 
-1. Belegen Sie die Buttons mit neuen `onClick`-Listener
+1. Schreiben Sie eine neue Methode zum Hinzufügen eines Freundes/in, welche die Nutzereingaben in einen String (Name) und einen int (Telefonnummer) umwandelt, um einen neuen Kontakt zu erstellen
 
-2. Schreiben Sie eine Methode `enterNewIntro()`, welche die Nutzereingaben in einen String
-(Name) und einen int (Telefonnummer) umwandelt, um einen neuen Kontakt zu erstellen
-
-3. Schreiben Sie eine Methode `findFriend()`, welche den eingegebenen Namen in einen String
+2. Schreiben Sie eine Methode zum Finden eines Freundes/in, welche den eingegebenen Namen in einen String
 umwandelt, um damit später eine Telefonnummer suchen zu können
 
-4. Rufen Sie diese beiden Methoden in den `onClick()`-Methoden der Buttons auf.
+3. Rufen Sie diese beiden Methoden in den `onClick()`-Methoden der Buttons auf.
 
 ### Datenbank erstellen
 
 1. Fügen Sie folgende gradle-Abhängigkeiten der build.gradle-Datei hinzu:
 ```
-implementation “android.arch.persistence.room:runtime:1.0.0”
-annotationProcessor “android.arch.persistence.room:compiler:1.0.0”
+    implementation 'android.arch.persistence.room:runtime:1.1.1'
+    annotationProcessor 'android.arch.persistence.room:compiler:1.1.1'
 ```
 
 2. Erstellen Sie eine Klasse `Friend`, welche einen Eintrag im Telefonbuch beschreibt
 
-    a.  Erstellen Sie den Header der Klasse und annotieren Sie diese mit `@Entity`.
+    a.  Die Klasse braucht die Annotation `@Entity` um von der Datenbank als solcher erkannt zu werden.
 
-    b. Erstellen Sie Variablen `friendId`, `friendName` und `phoneNumber`. Stellen Sie sicher, dass die Id nicht null wird (`@NonNull`) und sich selbst inkrementiert(`@PrimaryKey(autoGenerate = true)`).
+    b. Erstellen sie die zwei relevanten Instanzvariablen und zusätzliche eine Variable `friendId` die sich über eine Annotation selbst inkrementiert (`@PrimaryKey(autoGenerate = true)`).
 
-    c. Erstellen Sie einen leeren Konstruktor
+    c. Erstellen Sie getter- und setter-Methoden.
 
-    d. Erstellen Sie getter- und setter-Methoden und geben Sie Ihnen das Attribut `@NonNull`.
+3. Erstellen Sie ein Interface `FriendDao` für die Datenbankabfrage 
 
-    e. Nutzen Sie dazu die Generate-Möglichkeit von Android Studio (Alt+Einfg) (Rechtsklick, generate)
+    a. Annotieren Sie das Interface mit `@Dao`.
 
-    Erstellen Sie ein Interface DaoAccess für die Datenbankabfrage 
+    b. Schreiben Sie eine insert-Methode, welche einen neuen Freund in die Datenbank einfügt.( Annotation `@Insert`).
 
-    f. Erstellen Sie den Header der Interface-Klasse und annotieren Sie das Interface mit `@Dao`.
+    c. Schreiben Sie eine query-Methode `fetchOneFriendbyFriendName()`, welche als Rückgabetyp `Friend` hat. Annotieren Sie die SQL-Abfrage `@Query ("SELECT * FROM friend WHERE friendName = :friendName")` darüber.
 
-    g. Schreiben Sie eine insert-Methode, welche einen neuen Freund in die Datenbank einfügt. Schreiben Sie nur den Header der Methode und `@Insert` darüber.
-
-    h. Schreiben Sie eine query-Methode `fetchOneFriendbyFriendName()`, welche als Rückgabetyp `Friend` hat. Schreiben Sie die SQL-Abfrage `@Query ("SELECT * FROM friend WHERE friendName = :friendName")` darüber.
-
-3. Erstellen Sie eine Klasse, welche die Datenbank darstellt. 
+4. Erstellen Sie eine Klasse, welche die Datenbank darstellt. 
 
     a. Erstellen Sie eine abstrakte Klasse `FriendDatabase` welche von `RoomDatabase` erbt.
 
     b. Annotieren Sie die Datenbankklasse mit `@Database(entities = {Friend.class}, version = 1, exportSchema = false)` über dem Klassen-Header
 
-    c. Erstellen Sie die Methodensignatur für die Rückgabe des Data Access Object Interface `DaoAcess: public abstract DaoAccess daoAccess();`
+    c. Erstellen Sie die Methodensignatur für die Rückgabe des Data Access Object Interface `public abstract FriendDao daoAccess();`
 
 ### Datenbank in MainActivity einbinden
 
 1. Erstellen Sie eine Instanz der Datenbank in der `MainActitivity`
 
-    a. Erstellen Sie eine Variable `FriendDatabase` mit dem Namen `friendDatabase`
+    a. Erstellen Sie eine Variable der Klasse `FriendDatabase`
 
     b. Speichern Sie in der Variable `friendDatabase` den Rückgabewert des Aufrufs `Room.databaseBuilder(…)`. Die Variable enthält nun eine Referenz auf ein neues Datenbankobjekt.
 
@@ -94,9 +89,9 @@ annotationProcessor “android.arch.persistence.room:compiler:1.0.0”
 
 2. Speichern Sie die Nutzereingabe in der Datenbank.
 
-    a. Erstellen Sie in der von Ihnen erstellte Methode `enterNewIntro()` einen neuen Thread.
+    a. Erstellen Sie in der von Ihnen oben erstellten Methode einen neuen Thread.
 
-    b. Lassen Sie sich mittels der `DaoAccess` Methode `friendDatabase.daoAccess().fetchOneFriendByFriendName(friendname)` den gesuchten Friend zurückgeben.
+    b. Lassen Sie sich mittels der `FriendDao` Methode `friendDatabase.daoAccess().fetchOneFriendByFriendName(friendname)` den gesuchten Friend zurückgeben.
 
     c. Stellen Sie sicher, dass der Rückgabewert nicht null ist und lassen sich den Namen und die Telefonnummer des `Friends` mittels der getter-Methoden zurückgeben.
 
@@ -106,4 +101,8 @@ annotationProcessor “android.arch.persistence.room:compiler:1.0.0”
 
 ### Screenshots
 
-![Screenshot der fünften App](./docs/screenshot-1.png "Startbildschirm der App")
+<img src="./docs/screenshot1.png" alt="Startbildschirm" width="250"/>
+
+<img src="./docs/screenshot2.png" alt="Startbildschirm und Hinzufügen eines Freundes" width="250"/>
+
+<img src="./docs/screenshot3.png" alt="Startbildschirm und Ausgabe eines Freundes" width="250"/>
