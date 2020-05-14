@@ -2,19 +2,12 @@
 
 ![Cover für die sechste Übungsaufgabe](./docs/cover.png)
 
-## Downloads
-
-- [Download des Starterpakets](https://github.com/Android-Regensburg/U06-Telefonbuch/archive/master.zip)
-- [Download des Lösungsvorschlag](https://github.com/Android-Regensburg/U06-Telefonbuch/archive/solution.zip)
-
 ## Aufgabe
 
 Schreiben Sie eine einfache Datenbank-App, welche die Namen und Telefonnummern Ihrer Freunde
 speichert. Benutzen Sie eine Activity und `EditText`-Views um die Eingabe zu ermöglichen, sowie
 weitere `TextViews` und `Buttons` für die beschriebenen Funktionen. Nutzern soll es möglich sein, sich die
 Telefonnummer anzeigen zu lassen, indem sie den passenden Namen eingeben.
-
-<img src="./docs/screenshot3.png" alt="Startbildschirm und Ausgabe eines Freundes" width="250"/>
 
 ## Hinweise
 
@@ -101,8 +94,6 @@ umwandelt, um damit später eine Telefonnummer suchen zu können
 
 ### Screenshots
 
-<img src="./docs/screenshot1.png" alt="Startbildschirm" width="250"/>
-
-<img src="./docs/screenshot2.png" alt="Startbildschirm und Hinzufügen eines Freundes" width="250"/>
-
-<img src="./docs/screenshot3.png" alt="Startbildschirm und Ausgabe eines Freundes" width="250"/>
+| | | |
+|-|-|-|
+|![Screenshot des Telefonbuchs](./docs/screenshot1.png ){ height=8cm } |![Screenshot des Telefonbuchs](./docs/screenshot2.png ){ height=8cm } |![Screenshot des Telefonbuchs](./docs/screenshot3.png ){ height=8cm } |
