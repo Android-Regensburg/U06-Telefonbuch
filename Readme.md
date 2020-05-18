@@ -42,8 +42,8 @@ umwandelt, um damit später eine Telefonnummer suchen zu können
 
 1. Fügen Sie folgende gradle-Abhängigkeiten der build.gradle-Datei hinzu:
 ```
-    implementation 'android.arch.persistence.room:runtime:1.1.1'
-    annotationProcessor 'android.arch.persistence.room:compiler:1.1.1'
+    implementation "androidx.room:room-runtime:2.2.5"
+    annotationProcessor "androidx.room:room-compiler:2.2.5"
 ```
 
 2. Erstellen Sie eine Klasse `Friend`, welche einen Eintrag im Telefonbuch beschreibt
