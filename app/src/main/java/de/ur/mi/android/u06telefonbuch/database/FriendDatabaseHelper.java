@@ -21,10 +21,7 @@ public class FriendDatabaseHelper {
     }
 
     private void initDatabase() {
-        db = Room.databaseBuilder(context,
-                FriendDatabase.class, DATABASE_NAME)
-                .fallbackToDestructiveMigration()
-                .build();
+        db = Room.databaseBuilder(context, FriendDatabase.class, DATABASE_NAME).build();
     }
 
     public void addFriendToDatabase(Friend friend) {

@@ -8,7 +8,6 @@ public class Friend {
 
     @PrimaryKey(autoGenerate = true)
     private int uid;
-
     private String name;
     private int phoneNumber;
 
