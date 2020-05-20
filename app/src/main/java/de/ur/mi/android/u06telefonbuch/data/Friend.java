@@ -1,5 +1,6 @@
 package de.ur.mi.android.u06telefonbuch.data;
 
+import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 

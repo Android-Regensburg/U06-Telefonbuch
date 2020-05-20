@@ -1,6 +1,8 @@
 package de.ur.mi.android.u06telefonbuch.database;
 
+import android.app.Activity;
 import android.content.Context;
+import android.util.Log;
 
 import androidx.room.Room;
 
@@ -13,10 +15,10 @@ public class FriendDatabaseHelper {
     private static final String DATABASE_NAME = "friends-db";
     private FriendDatabase db;
 
-    private final Context context;
+    private final Activity context;
 
-    public FriendDatabaseHelper(Context context) {
-        this.context = context;
+    public FriendDatabaseHelper(Activity activityContext) {
+        this.context = activityContext;
         initDatabase();
     }
 
@@ -60,8 +62,14 @@ public class FriendDatabaseHelper {
 
         @Override
         public void run() {
-            Friend friend = db.friends().getFriendByName(friendName);
-            listener.onResult(friend);
+            final Friend friend = db.friends().getFriendByName(friendName);
+            // Return to UI-Thread when work is finished
+            context.runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    listener.onResult(friend);
+                }
+            });
         }
     }
 }
