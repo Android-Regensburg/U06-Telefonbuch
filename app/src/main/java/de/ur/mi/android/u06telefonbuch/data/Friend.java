@@ -1,12 +1,17 @@
 package de.ur.mi.android.u06telefonbuch.data;
 
-import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+/**
+ * Diese Klasse bildet einen einzelnen Eintrag im Telefonbuch, bzw. eine einzelne Person ab. Die
+ * in den Instanzen gespeicherten Informationen sollen in der Datenbank persistiert werden.
+ */
 @Entity
 public class Friend {
 
+    // Für die Verwendung mit der Datebank wird eine zusätzliche Instanzvariable für den Primär-
+    // schlüssel ergänzt.
     @PrimaryKey(autoGenerate = true)
     private int uid;
     private String name;

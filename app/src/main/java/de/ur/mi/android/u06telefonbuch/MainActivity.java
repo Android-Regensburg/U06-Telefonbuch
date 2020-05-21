@@ -13,6 +13,11 @@ import de.ur.mi.android.u06telefonbuch.data.Friend;
 import de.ur.mi.android.u06telefonbuch.database.FriendDatabaseHelper;
 import de.ur.mi.android.u06telefonbuch.database.FriendQueryResultListener;
 
+
+/**
+ * Die Anwendung erlaubt das Speichern von Personen (und Telefonnummern) in einer Datenbank. Die
+ * gespeicherten Einträge können anschließend durchsucht werden.
+ */
 public class MainActivity extends AppCompatActivity {
 
     private TextView tvSeeName;
@@ -20,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText etFriendName;
     private EditText etFriendPhoneNumber;
     private EditText etFindFriendName;
-
+    // Hilfs-Objekt für den Zugriff auf die Datenbank
     private FriendDatabaseHelper dbHelper;
 
     @Override
@@ -61,20 +66,27 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Liest die eingegeben Informationen (Name und Telefonnummer) aus dem UI aus und speichert diese
+     * in der Datenbank.
+     */
     private void enterNewFriend() {
         String name = etFriendName.getText().toString();
         String phoneNumber = etFriendPhoneNumber.getText().toString();
-        addNewFriendToDatabase(name, Integer.parseInt(phoneNumber));
-    }
-
-    private void addNewFriendToDatabase(String friendName, int phoneNumber) {
-        Friend friend = new Friend(friendName, phoneNumber);
+        Friend friend = new Friend(name, Integer.parseInt(phoneNumber));
         dbHelper.addFriendToDatabase(friend);
     }
 
+    /**
+     * Liest den eingegebe Text aus dem UI aus und stellt eine Suchanfrage an die Datenbank
+     */
     private void findFriend() {
         String name = etFindFriendName.getText().toString();
+        // Der Methode des Helpers wird ein annonymer Listener übergeben, der über das Ergebniss
+        // der (asynchronen) Suche in der Datenbank informiert werden soll.
         dbHelper.getFriendByName(name, new FriendQueryResultListener() {
+            // Diese Methode wird von der Hilfsklasse (genauuer, vom Runnable, das in der Hilfsklasse
+            // gestartet wird) aufgerufen, sobald die Suche in der Datenbank abgeschlossen ist.
             @Override
             public void onResult(Friend friend) {
                 showSearchResults(friend);
@@ -82,6 +94,9 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Zeigt Name und Telefonnumer des übergebenen Friend-Objekts im User Interface an
+     */
     private void showSearchResults(Friend friend) {
         tvSeeName.setText("");
         tvSeePhoneNumber.setText("");
