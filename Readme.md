@@ -18,7 +18,9 @@ header-includes: |
       \rhead{Mobile Apps für Android}
       \lhead{Übungsaufgaben}
       \cfoot[C]{\includegraphics[height=2cm]{docs/footer.png}}}
+      
 ---
+
 
 # U06 | Telefonbuch
 
